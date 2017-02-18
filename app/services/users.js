@@ -21,7 +21,6 @@ module.exports = {
 
   create: (body = {}) => {
     const model = new UserModel(body);
-    model.name = body.name;
     return model.save();
   },
 
