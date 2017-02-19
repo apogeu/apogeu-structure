@@ -1,4 +1,4 @@
-const _findById = _id => {
+const _findById = _id => new Promise((resolve, reject) => {
   UserModel
     .findOne({ _id })
     .then((data) => {
@@ -6,7 +6,7 @@ const _findById = _id => {
       resolve(data);
     })
     .catch(reject);
-};
+});
 
 module.exports = {
 
