@@ -1,4 +1,4 @@
-const _findById = _id => new Promise((resolve, reject) => {
+const findById = _id => new Promise((resolve, reject) => {
   UserModel
     .findOne({ _id })
     .then((data) => {
@@ -24,11 +24,11 @@ module.exports = {
     return model.save();
   },
 
-  findById: _findById,
+  findById,
 
   update: (_id, body) => new Promise((resolve, reject) => {
-    _findById(_id)
-      .then(user => {
+    findById(_id)
+      .then((user) => {
         Object.assign(user, body);
         user.save().then(resolve).catch(reject);
       })
@@ -36,8 +36,8 @@ module.exports = {
   }),
 
   delete: _id => new Promise((resolve, reject) => {
-    _findById(_id)
-      .then(user => {
+    findById(_id)
+      .then((user) => {
         user.remove().then(resolve).catch(reject);
       })
       .catch(reject);
