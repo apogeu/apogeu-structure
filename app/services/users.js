@@ -38,7 +38,7 @@ module.exports = {
   delete: _id => new Promise((resolve, reject) => {
     _findById(_id)
       .then(user => {
-        user.delete().then(resolve).catch(reject);
+        user.remove().then(resolve).catch(reject);
       })
       .catch(reject);
   }),
