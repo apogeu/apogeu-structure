@@ -24,7 +24,7 @@ const {{model}}Service = {
         resolve(data);
       })
       .catch(reject);
-  });,
+  }),
 
   update: (_id, body) => new Promise((resolve, reject) => {
     {{model}}Service.findById(_id)
