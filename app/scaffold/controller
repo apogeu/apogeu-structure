@@ -1,0 +1,9 @@
+const {{model}}Controller = {
+
+  index: (req, res) => {
+    res.render('index', { title: 'index' });
+  },
+
+};
+
+module.exports = {{model}}Controller;
