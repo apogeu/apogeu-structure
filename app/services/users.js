@@ -1,15 +1,4 @@
-const findById = _id => new Promise((resolve, reject) => {
-  UserModel
-    .findOne({ _id })
-    .then((data) => {
-      if (!data) return reject({ success: false, message: 'Not found', status: 404 });
-      resolve(data);
-    })
-    .catch(reject);
-});
-
-module.exports = {
-
+const UsersService = {
   list: (query = {}) => {
     const { limit, skip, sort } = query;
     return UserModel
@@ -24,10 +13,18 @@ module.exports = {
     return model.save();
   },
 
-  findById,
+  findById: _id => new Promise((resolve, reject) => {
+    UserModel
+      .findOne({ _id })
+      .then((data) => {
+        if (!data) return reject({ success: false, message: 'Not found', status: 404 });
+        resolve(data);
+      })
+      .catch(reject);
+  }),
 
   update: (_id, body) => new Promise((resolve, reject) => {
-    findById(_id)
+    UsersService.findById(_id)
       .then((user) => {
         Object.assign(user, body);
         user.save().then(resolve).catch(reject);
@@ -36,7 +33,7 @@ module.exports = {
   }),
 
   delete: _id => new Promise((resolve, reject) => {
-    findById(_id)
+    UsersService.findById(_id)
       .then((user) => {
         user.remove().then(resolve).catch(reject);
       })
@@ -44,3 +41,5 @@ module.exports = {
   }),
 
 };
+
+module.exports = UsersService;

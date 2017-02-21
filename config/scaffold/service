@@ -1,5 +1,3 @@
-const Promise = require('bluebird');
-
 const {{model}}Service = {
 
   list: (query = {}) => {
