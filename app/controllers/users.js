@@ -1,4 +1,4 @@
-module.exports = {
+const UsersController = {
 
   list: (req, res, next) => {
     UsersService
@@ -34,4 +34,7 @@ module.exports = {
       .then(() => res.status(200).json({ success: true }))
       .catch(next);
   },
+
 };
+
+module.exports = UsersController;
