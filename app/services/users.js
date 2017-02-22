@@ -1,4 +1,5 @@
 const UsersService = {
+
   list: (query = {}) => {
     const { limit, skip, sort } = query;
     return UserModel
