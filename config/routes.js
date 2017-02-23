@@ -1,10 +1,35 @@
 // config/routes.js
 
 module.exports = {
-  'get /': [LogMiddleware, HomepagesController.index],
-  'get /users': UsersController.list,
-  'post /users': UsersController.create,
-  'get /users/:id': UsersController.findById,
-  'put /users/:id': UsersController.update,
-  'delete /users/:id': UsersController.delete,
+  'get /': HomepagesController.index,
+
+  'get /middleware': [LogMiddleware, HomepagesController.index],
+
+  '/users': [
+    {
+      method: 'get',
+      middlewares: [LogMiddleware],
+      controller: UsersController.list,
+    },
+    {
+      method: 'post',
+      controller: UsersController.create,
+    },
+  ],
+
+  '/users/:id': [
+    {
+      method: 'get',
+      controller: UsersController.findById,
+    },
+    {
+      method: 'put',
+      controller: UsersController.update,
+    },
+    {
+      method: 'delete',
+      controller: UsersController.delete,
+    },
+  ],
+
 };
