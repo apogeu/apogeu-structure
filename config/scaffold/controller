@@ -1,7 +1,7 @@
 const {{model}}Controller = {
 
   index: (req, res) => {
-    res.render('index', { title: 'index' });
+    res.send("{{model}}");
   },
 
 };
