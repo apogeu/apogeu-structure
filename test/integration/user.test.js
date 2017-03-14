@@ -5,5 +5,6 @@ it('list users', (done) => {
     .then((results) => {
       assert.equal(Array.isArray(results), true);
       done();
-    });
+    })
+    .catch(done);
 });
