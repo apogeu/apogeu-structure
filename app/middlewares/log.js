@@ -1,5 +1,7 @@
+const log = require('winston');
+
 const LogMiddleware = (req, res, next) => {
-  console.log('log middleware');
+  log.debug('log middleware');
   next();
 };
 
